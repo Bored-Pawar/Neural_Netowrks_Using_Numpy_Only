@@ -15,10 +15,22 @@ def BCE(y_true, y_pred):
     return -np.mean(y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred))
 
 def BCE_prime(y_true, y_pred):
-    # Add a small epsilon to prevent division by zero
+    # add a small epsilon to prevent division by zero
     epsilon = 1e-15
     y_pred = np.clip(y_pred, epsilon, 1 - epsilon)
     return -((y_true / y_pred) - ((1 - y_true) / (1 - y_pred))) / np.size(y_true)
 
-# softmax
-# to be made
+# categorical cross entropy 
+def CCE(y_true, y_pred):
+    # add a small epsilon to prevent log(0) errors
+    epsilon = 1e-15
+    y_pred = np.clip(y_pred, epsilon, 1 - epsilon)
+    
+    # calculate the loss for each sample and average
+    # we multiply by y_true to only sum the log probability of the correct class
+    return -np.mean(np.sum(y_true * np.log(y_pred), axis=0))
+
+def CCE_prime(y_true, y_pred):
+    # this is the simplified gradient (Predicted - True)
+    # no need to divide by size here as the gradient should be per-sample
+    return y_pred - y_true
