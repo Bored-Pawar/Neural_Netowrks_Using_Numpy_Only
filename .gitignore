@@ -20,7 +20,3 @@ cifar-10-data/
 # OS
 .DS_Store
 Thumbs.db
-
-# Claude-specific
-.claude/
-CLAUDE.md
