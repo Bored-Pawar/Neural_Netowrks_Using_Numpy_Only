@@ -1,5 +1,8 @@
 from layer import Layer
-import numpy as np
+try:
+    import cupy as np  # Use CuPy for GPU acceleration
+except ImportError:
+    import numpy as np  # Fallback to NumPy if CuPy not available
 
 class Activation(Layer):
     def __init__(self, activation, activation_prime):

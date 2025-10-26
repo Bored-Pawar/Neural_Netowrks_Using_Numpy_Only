@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# CIFAR-10 data
+cifar-10-data/
+*.tar.gz
+
+# Results and logs
+*.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude-specific
+.claude/
+CLAUDE.md
